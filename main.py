@@ -27,7 +27,7 @@ def main():
         img = image_select(
             "Selecciona una pelicula",
             images=[movie["titlePosterImageModel"]["url"] for movie in st.session_state.movies],
-            captions=[movie["titleNameText"] + f"({movie["titleReleaseText"]})" for movie in st.session_state.movies],
+            captions=[f"{movie["titleNameText"]} ({movie["titleReleaseText"]})" for movie in st.session_state.movies],
             return_value="index"
         )
 
@@ -36,5 +36,6 @@ def main():
             st.switch_page("pages/0_Movie_Details.py")
     else:
         st.text("Sin resultados :c")
+
 if __name__ == "__main__":
     main()
