@@ -49,7 +49,7 @@ def get_directors(response:dict):
 def get_details(id:str):
     querystring = {"id": id}
 
-    response = requests.get(url, headers=headers, params=querystring).json()
+    response = requests.get(url + "/title/", headers=headers, params=querystring).json()
 
     result = {
         "title": response["titleText"]["text"],
@@ -60,4 +60,11 @@ def get_details(id:str):
         "background": get_background(response)
     }
 
-    return result
+    return result 
+
+def search_movie(title:str):
+    querystring = {"query": title}
+
+    response = requests.get(url + "/find/", headers=headers, params=querystring).json()
+
+    return response["titleResults"]["results"]
