@@ -1,14 +1,23 @@
-import os
+# import os
 import requests
 import random
-from dotenv import load_dotenv
+import streamlit as st
+# from dotenv import load_dotenv
 
-load_dotenv()
+# load_dotenv()
 
-url = os.getenv('API_URL')
+# url = os.getenv('API_URL')
+
+# headers = {
+#     "X-RapidAPI-Key": os.getenv('API_KEY'),
+#     "X-RapidAPI-Host": os.getenv('API_HOST')
+# }
+
+url = st.secrets['API_URL']
+
 headers = {
-    "X-RapidAPI-Key": os.getenv('API_KEY'),
-    "X-RapidAPI-Host": os.getenv('API_HOST')
+    "X-RapidAPI-Key": st.secrets['API_KEY'],
+    "X-RapidAPI-Host": st.secrets['API_HOST']
 }
 
 def get_background(response:dict):
